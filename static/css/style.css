@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    opacity: 1;
+}
+body {
+    background-color: #ffffff;
+    margin: 0;
+}
+.banner {
+    display: block;
+    background-color: #2868c7;
+    border-bottom: 1px solid #ffffff;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0;
+    width: auto;
+    height: 79px;
+}
+.banner img {
+    width: 77px;
+    height: auto;
+    border-radius: 5px;
+}
+h1 {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    float: right;
+    padding: 0px 10px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2868c7;
+    border-right: 1px solid #ffffff;
+    border-radius: 5px;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-left: 1px solid #ffffff;
+    border-radius: 5px;
+}
+ul .create {
+    border-right: 1px solid #ffffff;
+}
+li a:hover {
+    background-color: #0a1fdd;
+}
+.buttons {
+    text-align: center;
+    margin: 30px;
+}
+.buttons .btn-search, .buttons .btn-create {
+    color: white;
+    background-color: #2868c7;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border-left: 1px solid #ffffff;
+    border-radius: 5px;
+}
+.buttons .btn-search:hover, .buttons .btn-create:hover {
+    background-color: #0a1fdd;
+}
+p {
+    padding: 0 15px;
+}
+/* Section Index */
+.index {
+    background-color: #2868c7;
+    background-image: url("https://img.freepik.com/foto-gratis/representacion-3d-cilindro-gas_23-2149290453.jpg?w=1060&t=st=1658091286~exp=1658091886~hmac=950dd5fd6c738b8a4e6ce89b1b6252cd3c4907b8e26747cc0ad5898f81d3f665");
+    /*Imágenes
+    https://cdn.pixabay.com/photo/2017/03/27/12/39/kettles-2178442_960_720.jpg
+    https://cdn.pixabay.com/photo/2010/12/13/10/05/appliance-2257_960_720.jpg
+    https://cdn.pixabay.com/photo/2015/08/02/14/34/flame-871136_960_720.jpg
+    https://cdn.pixabay.com/photo/2016/12/29/10/45/gas-1938298_960_720.jpg
+    https://img.freepik.com/foto-gratis/representacion-3d-cilindro-gas_23-2149290461.jpg?w=1060&t=st=1658090961~exp=1658091561~hmac=e6a9f7338bec669cf9cb09728a953673af7cb645957358671190d4e7056f0e03
+    */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.7;
+}
+.login {
+    width: 400px;
+    background-color: #fff;
+    margin: 100px auto;
+    border-radius: 5px;
+}
+.imagen {
+    padding: 10px;
+    margin: auto 100px;
+}
+.login p {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px 20px;
+    margin: 0;
+}
+.login form #user{
+    width: 300px;
+    height: 30px;
+    padding: 0px 15px;
+    margin: 10px 50px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+.login form #password{
+    width: 300px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 10px 50px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+.login form #boton {
+    width: 100px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 15px 150px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+}
+.login form input:hover {
+    box-shadow: 0 0.1rem 0.4rem #2868c7;
+}
+
+/* Section Home */
+
+
+/* Section Search */
+.SEARCH .buscar_cliente, .SEARCH .buscar_pedido {
+    text-align: center;
+}
+.SEARCH .buscar_cliente {
+    margin: 10px 0;
+    padding: 0px;
+}
+.SEARCH .buscar_pedido {
+    margin: 10px 0;
+    padding: 0px;
+}
+.SEARCH .informacion { 
+    overflow-x: auto;
+}
+.SEARCH .informacion table {
+    margin: 0px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+.SEARCH .informacion caption {
+    font-size: 20px;
+    background-color: #2868c7;
+    color: #fff;
+    padding: 5px;
+}
+.SEARCH .informacion th {
+    font-size: 14px;
+    text-align: center;
+    background-color: #2868c7;
+    border: 1px solid #ffffff;
+    color: #fff;
+    padding: 2px 5px;
+}
+.SEARCH .informacion td {
+    border: 1px solid #2868c7;
+    text-align: left;
+    padding: 2px 5px;
+}
+/* Section Create */
+
+/* Section About */
