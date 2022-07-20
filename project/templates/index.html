@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<body class="index">
+    <section class="login">
+        <img class="imagen" src="{{url_for('static', filename='img/NORGAS.jpg')}}" alt="Inicio de Sesión" width="200" height="200" />
+        <p>Inicio de sesión</p>
+        <form method="POST" action="/">
+            <input type="email" name="email" id="user" placeholder="Correo" autofocus="" autocomplete="off" required />
+            <input type="password"  name="password" id="password" placeholder="Contraseña" autocomplete="off" required/>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Ingresar
+            </button>
+        </form>
+    </section>
+</body>
+{% endblock body %}

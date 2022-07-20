@@ -1,0 +1,60 @@
+{% extends "layout_menu.html" %}
+
+{% block menu %}
+    <section class="SEARCH">
+        <p>Estás en la sección: Buscar</p>
+        <section class="buscar_cliente">
+            <form action="">
+                <label for="buscar_cliente_bd">Buscar cliente:</label>
+                <input type="text" id="buscar_cliente_bd" name="buscar_cliente_bd" placeholder="Cedula usuario" />
+            </form>
+        </section>
+        <section class="buscar_pedido">
+            <form action="">
+                <label for="buscar_pedido_bd">Buscar pedido:</label>
+                <input type="text" id="buscar_pedido_bd" name="buscar_pedido_bd" placeholder="# Pedido" />
+            </form>
+        </section>
+        <section class="buttons">
+            <a class="btn-search" href="/search">Buscar</a>
+            <a class="btn-create" href="/create">Crear pedido</a>
+        </section>
+        <section class="informacion">
+            <table> 
+                <caption>Información del cliente</caption>
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Fecha de registro</th>
+                        <th>Referencia del producto</th>
+                        <th># productos</th>
+                        <th>Estado</th>
+                        <th>Deuda</th>
+                        <th>Anotaciones</th>
+                        <th>Fecha pedido</th>
+                        <th># Pedido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+{% endblock menu %}
