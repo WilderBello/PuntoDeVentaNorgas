@@ -5,17 +5,17 @@
     <section class="login">
         <img class="imagen" src="{{url_for('static', filename='img/NORGAS.jpg')}}" alt="Inicio de Sesión" width="200" height="200" />
         <p>Inicio de sesión</p>
-        <form action="" method="post">
+        <form method="POST">
             <input type="text" name="user" id="user" placeholder="Usuario" autocomplete="off" required />
             <input type="password"  name="password" id="password" placeholder="Contraseña" autocomplete="off" required/>
+            <button class="home">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Ingresar
+            </button>
         </form>
-        <a class="home" href="/home">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Ingresar
-        </a>
     </section>
 </body>
 {% endblock body %}
