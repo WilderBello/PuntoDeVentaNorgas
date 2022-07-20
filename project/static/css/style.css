@@ -120,6 +120,16 @@ p {
     text-align: center;
     outline: none;
 }
+.login form #name{
+    width: 300px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 10px 50px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    outline: none;
+}
 .login form #password{
     width: 300px;
     height: 30px;
