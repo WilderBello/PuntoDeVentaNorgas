@@ -1,14 +1,14 @@
 {% extends "layout_menu.html" %}
 {% block usuario %}
-<h1 class="title">
+<p class="title">
     Bienvenido, {{name}}!
-</h1>
+</p>
 {% endblock usuario %}
 {% block menu %}
-        <section class="HOME">
-            <section class="buttons">
-                <a class="btn-search" href="/search">Buscar Usuario</a>
-                <a class="btn-create" href="/create">Crear pedido</a>
-            </section>
-        </section>
+<section class="HOME">
+    <section class="buttons">
+        <a class="btn-search" href="/search">Buscar Usuario</a>
+        <a class="btn-create" href="/create">Crear pedido</a>
+    </section>
+</section>
 {% endblock menu %}

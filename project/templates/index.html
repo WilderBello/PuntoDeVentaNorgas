@@ -16,6 +16,13 @@
                 Ingresar
             </button>
         </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <section class="notification is-danger">
+                {{ messages[0] }}
+            </section>
+        {% endif %}
+        {% endwith %}
     </section>
 </body>
 {% endblock body %}

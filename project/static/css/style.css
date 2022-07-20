@@ -154,6 +154,7 @@ p {
     letter-spacing: 3px;
     border: none;
     background-color: #fff;
+    outline: 1px blue;
 }
 
 .login button span {
@@ -229,9 +230,23 @@ p {
 .login form input:hover {
     box-shadow: 0 0.1rem 0.4rem #2868c7;
 }
+.login .notification {
+    background-color: red;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
 
 /* Section Home */
-
+.title {
+    font-size: 20px;
+    padding: 20px;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    text-align: left;
+}
 
 /* Section Search */
 .SEARCH .buscar_cliente, .SEARCH .buscar_pedido {
