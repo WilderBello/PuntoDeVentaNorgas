@@ -18,5 +18,9 @@
         "titleBar.inactiveBackground": "#0ae1ff99",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#0AE1FF"
+    "peacock.color": "#0AE1FF",
+    "cSpell.words": [
+        "backref",
+        "nullable"
+    ]
 }
