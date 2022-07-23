@@ -35,6 +35,12 @@
                 {% if messages %}
                     <section class="aviso">
                         {{ messages[0] }}
+                        <script>
+                            function recarga() {
+                                window.location.reload(1);
+                            };
+                            setTimeout(recarga, 10000);
+                        </script>
                     </section>
                 {% endif %}
                 {% endwith %}

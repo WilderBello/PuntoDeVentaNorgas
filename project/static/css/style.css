@@ -91,7 +91,7 @@ p {
 }
 .aviso {
     display: block;
-    margin: 0px;
+    margin: 10px 0px;
     padding: 10px;
     text-align: center;
     background-color: rgb(247, 231, 51);
