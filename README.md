@@ -6,6 +6,9 @@ Para ejecutar el proyecto es necesario tener instalado:
 - flask-sqlalchemy
 
 Comandos:
+
+Entorno Virtual: python3 -m venv ~nombre de la carpeta~
+
 Windows:
   - .\env\Scripts\activate
   - set FLASK_APP=project
@@ -13,7 +16,7 @@ Windows:
   - flask run
   - .\env\Scripts\deactivate
 
-Linux: env: python3 -m venv ~carpeta~
+Linux:
   - source env_linux/bin/activate
   - export FLASK_APP=project
   - export FLASK_DEBUG=1
