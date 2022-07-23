@@ -260,7 +260,7 @@ p {
 .login form input:hover {
     box-shadow: 0 0.1rem 0.4rem #2868c7;
 }
-.login .notification {
+.notification {
     background-color: red;
     text-align: center;
     margin: 0;
