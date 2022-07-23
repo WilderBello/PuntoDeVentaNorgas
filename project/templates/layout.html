@@ -8,15 +8,18 @@
         <title>Inicio de Sesión</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
     </head>
-
-    {% block body %} 
-    {% endblock body %}
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <section class="notification is-danger">
-                {{ messages[0] }}
-            </section>
-        {% endif %}
-    {% endwith %}
+    <body class="index">
+        <section class="login">
+            <img class="imagen" src="{{url_for('static', filename='img/NORGAS.jpg')}}" alt="Inicio de Sesión" width="200" height="200" />
+            {% block body %}
+            {% endblock body %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <section class="notification is-danger">
+                        {{ messages[0] }}
+                    </section>
+                {% endif %}
+            {% endwith %}
+        </section>
+    </body>
 </html>
