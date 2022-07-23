@@ -61,20 +61,37 @@ li a:hover {
     text-align: center;
     margin: 30px;
 }
-.buttons .btn-search, .buttons .btn-create {
+.btn {
     color: white;
     background-color: #2868c7;
     text-align: center;
-    padding: 10px;
+    margin: 10px auto;
+    padding: 5px 10px;
     text-decoration: none;
     border-left: 1px solid #ffffff;
     border-radius: 5px;
+    border:none;
 }
-.buttons .btn-search:hover, .buttons .btn-create:hover {
+.btn:hover {
     background-color: #0a1fdd;
+}
+.btn-1 {
+    display: block;
+    margin: auto;
+}
+.btn-2 {
+    display: block;
+    margin: 10px auto;
 }
 p {
     padding: 0 15px;
+}
+.aviso {
+    display: block;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(247, 231, 51);
 }
 /* Section Index */
 .index {
@@ -140,7 +157,7 @@ p {
     text-align: center;
     outline: none;
 }
-/*.login form #boton {
+/*.login button {
     width: 100px;
     height: 30px;
     padding: 0 15px;
@@ -250,6 +267,10 @@ p {
 }
 
 /* Section Home */
+fieldset {
+    margin: 10px;
+    border-radius: 5px;
+}
 .title {
     font-size: 20px;
     padding: 20px;
@@ -259,14 +280,10 @@ p {
 }
 
 /* Section Search */
-.SEARCH .buscar_cliente, .SEARCH .buscar_pedido {
+.SEARCH .buscar_cliente {
     text-align: center;
 }
 .SEARCH .buscar_cliente {
-    margin: 10px 0;
-    padding: 0px;
-}
-.SEARCH .buscar_pedido {
     margin: 10px 0;
     padding: 0px;
 }
@@ -298,7 +315,40 @@ p {
     padding: 2px 5px;
 }
 /* Section Create */
-
+.Crear form fieldset {
+    margin: 20px auto;
+    float: center;
+    width: 400px;
+    border-radius: 5px;
+}
+.Crear form label{
+    display: block;
+    margin: 5px 0;
+    width: 45%;
+    float: left;
+}
+.Crear form input, .Crear form select {
+    width: 55%;
+    border: 1px solid #aaa;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+.Crear form input:hover, .Crear form select:hover {
+    box-shadow: 0 0.1rem 0.4rem #2868c7;
+}
+.Crear form section {
+    margin: 10px auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+}
 /* Section About */
-
+.ABOUT fieldset {
+    margin: 20px auto;
+    float: center;
+    width: 400px;
+    border-radius: 5px;
+}
 

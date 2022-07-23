@@ -1,7 +1,62 @@
 {% extends "layout_menu.html" %}
 
 {% block menu %}
-    <section class="CREATE">
-        <p>Sección Crear</p>
+    <section class="Crear">
+        <form action="/create" method="POST">
+            <fieldset>
+            <legend>Crear pedido</legend>
+            <section>
+                <label for="id_cliente">Documento cliente:</label>
+                <input type="text" id="id_cliente" name="id_cliente" />
+            </section>
+            <section>
+                <label for="name_cliente">Nombre de cliente:</label>
+                <input type="text" id="name_cliente" name="name_cliente" />
+            </section>
+            <section>
+                <label for="telefone_cliente">Telefono:</label>
+                <input type="text" id="telefone_cliente" name="telefone_cliente"/>
+            </section>
+            <section>
+                <label for="direccion_cliente">Dirección de cliente:</label>
+                <input type="text" id="direccion_cliente" name="direccion_cliente"/>
+            </section>
+            <section>
+                <label for="referencia_producto">Referencia:</label>
+                <input type="text" id="referencia_producto" name="referencia_producto"/>
+            </section>
+            <section>
+                <label for="fecha_pedido">Fecha:</label>
+                <input type="date" id="fecha_pedido" name="fecha_pedido"/>
+            </section>
+            <section>
+                <label for="num_productos">Numero de productos:</label>
+                <select name="num_productos" id="num_productos">
+                    <option value="uno">1</option>
+                    <option value="dos">2</option>
+                    <option value="tres">3</option>
+                    <option value="cuatro">4</option>
+                    <option value="cinco">5</option>
+                </select>
+            </section>
+            <section>
+                <label for="estado_producto">Estado del producto:</label>
+                <select name="estado_producto" id="estado_producto">
+                    <option value="tiene">Tiene</option>
+                    <option value="no_tiene">No tiene</option>
+                </select>
+            </section>
+            <section>
+                <label for="deuda">Deuda:</label>
+                <input type="text" id="deuda" name="deuda"/>
+            </section>
+            <section>
+                <label for="anotaciones">Anotaciones:</label>
+                <input type="text" id="anotaciones" name="anotaciones"/>
+            </section>
+            
+            <button class="btn btn-1">Crear Pedido</button>
+            </fieldset>
+        </form>
     </section>
 {% endblock menu %}

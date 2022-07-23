@@ -2,23 +2,17 @@
 
 {% block menu %}
     <section class="SEARCH">
-        <p>Estás en la sección: Buscar</p>
+        <fieldset>
+        <legend>Buscar</legend>
+            
         <section class="buscar_cliente">
-            <form action="">
+            <form action="/search" method="POST">
                 <label for="buscar_cliente_bd">Buscar cliente:</label>
                 <input type="text" id="buscar_cliente_bd" name="buscar_cliente_bd" placeholder="Cedula usuario" />
+                <button class="btn btn-2">Buscar</button>
             </form>
         </section>
-        <section class="buscar_pedido">
-            <form action="">
-                <label for="buscar_pedido_bd">Buscar pedido:</label>
-                <input type="text" id="buscar_pedido_bd" name="buscar_pedido_bd" placeholder="# Pedido" />
-            </form>
-        </section>
-        <section class="buttons">
-            <a class="btn-search" href="/search">Buscar</a>
-            <a class="btn-create" href="/create">Crear pedido</a>
-        </section>
+        </fieldset>
         <section class="informacion">
             <table> 
                 <caption>Información del cliente</caption>

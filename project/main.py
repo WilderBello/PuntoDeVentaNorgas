@@ -1,5 +1,5 @@
 from unicodedata import name
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template,url_for, flash
 from flask_login import current_user, login_required
 from . import db
 
@@ -24,3 +24,13 @@ def create():
 @login_required
 def about():
     return render_template('about.html')
+
+@main.route('/create', methods=['POST'])
+def create_post():
+    flash('Pedido registrado correctamente')
+    return redirect(url_for('main.create'))
+
+@main.route('/search', methods=['POST'])
+def search_post():
+    flash('Usuario encontrado correctamente')
+    return redirect(url_for('main.search'))

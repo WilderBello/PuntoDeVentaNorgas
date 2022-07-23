@@ -20,11 +20,24 @@
                 <li style="float:right"><a class="close_session" href="/logout">Cerrar Sesión</a></li>
                 <li style="float:right"><a class="about" href="/about">Acerca de</a></li>
             </ul>
-
+            {% block general %}
+            
             {% block usuario %}
             {% endblock usuario %}
 
             {% block menu %}
             {% endblock menu %}
+            
+            {% endblock general %}
+            
+            <section>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <section class="aviso">
+                        {{ messages[0] }}
+                    </section>
+                {% endif %}
+                {% endwith %}
+            </section>
     </body>
 </html>

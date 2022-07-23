@@ -1,4 +1,8 @@
 {% extends "layout_menu.html" %}
+
+{% block general %}
+<fieldset>
+    <legend>Inicio</legend>
 {% block usuario %}
 <p class="title">
     Bienvenido, {{name}}!
@@ -7,8 +11,10 @@
 {% block menu %}
 <section class="HOME">
     <section class="buttons">
-        <a class="btn-search" href="/search">Buscar Usuario</a>
-        <a class="btn-create" href="/create">Crear pedido</a>
+        <a class="btn" href="/search">Buscar Usuario</a>
+        <a class="btn" href="/create">Crear pedido</a>
     </section>
 </section>
 {% endblock menu %}
+</fieldset>
+{% endblock general %}
