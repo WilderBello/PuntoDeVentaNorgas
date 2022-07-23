@@ -13,7 +13,7 @@ Windows:
   - flask run
   - .\env\Scripts\deactivate
 
-Linux:
+Linux: env: python3 -m venv ~carpeta~
   - source env_linux/bin/activate
   - export FLASK_APP=project
   - export FLASK_DEBUG=1
