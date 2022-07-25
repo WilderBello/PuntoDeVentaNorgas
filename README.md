@@ -1,4 +1,4 @@
-# Use_Python_Flask
+# Project_PuntoDeVenta_PythonFlask
 
 Para ejecutar el proyecto es necesario tener instalado:
 - flask
