@@ -7,6 +7,10 @@ Para ejecutar el proyecto es necesario tener instalado:
 
 Comandos:
 
+requerimientos: 
+  - pip freeze > requirements.txt
+  - pip install -r requirements.txt
+
 Entorno Virtual: python3 -m venv ~nombre de la carpeta~
 
 Windows:
