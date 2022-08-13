@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    opacity: 1;
+}
+body {
+    background-color: #ffffff;
+    margin: 0;
+}
+.banner {
+    display: block;
+    background-color: #2868c7;
+    border-bottom: 1px solid #ffffff;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0;
+    width: auto;
+    height: 79px;
+}
+.banner img {
+    width: 77px;
+    height: auto;
+    border-radius: 5px;
+}
+h1 {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    float: right;
+    padding: 0px 10px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2868c7;
+    border-right: 1px solid #ffffff;
+    border-radius: 5px;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-left: 1px solid #ffffff;
+    border-radius: 5px;
+}
+.derecha {
+    float: right;
+}
+ul .create {
+    border-right: 1px solid #ffffff;
+}
+li a:hover {
+    background-color: #0a1fdd;
+}
+.buttons {
+    text-align: center;
+    margin: 30px;
+}
+.btn {
+    color: white;
+    background-color: #2868c7;
+    text-align: center;
+    margin: 10px auto;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-left: 1px solid #ffffff;
+    border-radius: 5px;
+    border:none;
+}
+.btn:hover {
+    background-color: #0a1fdd;
+}
+.btn-1 {
+    display: block;
+    margin: auto;
+}
+.btn-2 {
+    display: block;
+    margin: 10px auto;
+}
+p {
+    padding: 0 15px;
+}
+.aviso {
+    display: block;
+    margin: 10px 0px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(247, 231, 51);
+}
+/* Section Index */
+.index {
+    background-color: #2868c7;
+    background-image: url("/static/img/fondo.jpg");
+    /*Imágenes
+    https://cdn.pixabay.com/photo/2017/03/27/12/39/kettles-2178442_960_720.jpg
+    https://cdn.pixabay.com/photo/2010/12/13/10/05/appliance-2257_960_720.jpg
+    https://cdn.pixabay.com/photo/2015/08/02/14/34/flame-871136_960_720.jpg
+    https://cdn.pixabay.com/photo/2016/12/29/10/45/gas-1938298_960_720.jpg
+    https://img.freepik.com/foto-gratis/representacion-3d-cilindro-gas_23-2149290461.jpg?w=1060&t=st=1658090961~exp=1658091561~hmac=e6a9f7338bec669cf9cb09728a953673af7cb645957358671190d4e7056f0e03
+    */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.8;
+}
+.login {
+    width: 400px;
+    background-color: #fff;
+    margin: 100px auto;
+    border-radius: 5px;
+}
+.imagen {
+    padding: 10px;
+    margin: auto 100px;
+}
+.login p {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 20px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.login form #user{
+    width: 300px;
+    height: 30px;
+    padding: 0px 15px;
+    margin: 10px 50px;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    outline: none;
+}
+.login form #name{
+    width: 300px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 10px 50px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    outline: none;
+}
+.login form #password{
+    width: 300px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 10px 50px;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    outline: none;
+}
+/*.login button {
+    width: 100px;
+    height: 30px;
+    padding: 0 15px;
+    margin: 15px 150px;
+    border: 1px solid #aaa;
+    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+}*/
+/* Boton ingresar */
+.login .button {
+    position: relative;
+    display: inline-block;
+    margin: 10px 110px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(67, 105, 241);
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 3px;
+    border: 1px solid rgb(25, 14, 241);
+    outline: 1px blue;
+    border-radius: 5px;
+}
+
+.login form input:hover {
+    box-shadow: 0 0.1rem 0.4rem #2868c7;
+}
+.notification {
+    background-color: red;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* Section Home */
+fieldset {
+    margin: 10px;
+    border-radius: 5px;
+}
+.title {
+    font-size: 20px;
+    padding: 20px;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    text-align: left;
+}
+
+/* Section Search */
+.SEARCH .buscar_cliente {
+    text-align: center;
+}
+.SEARCH .buscar_cliente {
+    margin: 10px 0;
+    padding: 0px;
+}
+.SEARCH .informacion { 
+    overflow-x: auto;
+}
+.SEARCH .informacion table {
+    margin: 0px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+.SEARCH .informacion caption {
+    font-size: 20px;
+    background-color: #2868c7;
+    color: #fff;
+    padding: 5px;
+}
+.SEARCH .informacion th {
+    font-size: 14px;
+    text-align: center;
+    background-color: #2868c7;
+    border: 1px solid #ffffff;
+    color: #fff;
+    padding: 2px 5px;
+}
+.SEARCH .informacion td {
+    border: 1px solid #2868c7;
+    text-align: left;
+    padding: 2px 5px;
+}
+/* Section Create */
+.Crear form fieldset {
+    margin: 20px auto;
+    float: center;
+    width: 400px;
+    border-radius: 5px;
+}
+.Crear form label{
+    display: block;
+    margin: 5px 0;
+    width: 45%;
+    float: left;
+}
+.Crear form input, .Crear form select {
+    width: 55%;
+    border: 1px solid #aaa;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+.Crear form input:hover, .Crear form select:hover {
+    box-shadow: 0 0.1rem 0.4rem #2868c7;
+}
+.Crear form section {
+    margin: 10px auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+}
+/* Section About */
+.ABOUT fieldset {
+    margin: 20px auto;
+    float: center;
+    width: 400px;
+    border-radius: 5px;
+}
+

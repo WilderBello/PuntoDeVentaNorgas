@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <p>Inicio de sesión</p>
+        <form action="/login", method="POST">
+            
+            {{form.Correo (id="user", placeholder="Correo") }}</br>
+
+            {{form.Password (id="password", placeholder="Contraseña", type="Password") }}</br>
+
+            {{form.iniciar (class="button") }} {{form.hidden_tag()}}
+            
+        </form>
+{% endblock body %}

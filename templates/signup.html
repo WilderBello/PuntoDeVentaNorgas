@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <p>Crear Usuario</p>
+        <form action="/signup", method="POST">
+
+            {{form.Correo (id="user", placeholder="Correo") }}</br>
+
+            {{form.Username (id="name", placeholder="Nombre de Usuario") }}</br>
+
+            {{form.Password (id="password", placeholder="Contraseña", type="Password") }}</br>
+
+            {{form.enviar (class="button") }} {{form.hidden_tag()}}
+
+        </form>
+{% endblock body %}
