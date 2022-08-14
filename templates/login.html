@@ -4,9 +4,9 @@
         <p>Inicio de sesión</p>
         <form action="/login", method="POST">
             
-            {{form.Correo (id="user", placeholder="Correo") }}</br>
+            {{form.Correo (placeholder="Correo") }}
 
-            {{form.Password (id="password", placeholder="Contraseña", type="Password") }}</br>
+            {{form.Password (placeholder="Contraseña", type="Password") }}
 
             {{form.iniciar (class="button") }} {{form.hidden_tag()}}
             
