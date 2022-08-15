@@ -9,19 +9,34 @@ def sql_connection():
         print(Error)
 
 def sql_login(correo, password):
-    str_sql = f"SELECT * from Credenciales WHERE correo = '{correo}' AND password = '{password}';"
+    str_sql = f"SELECT username FROM Credenciales WHERE correo = '{correo}' AND password = '{password}';"
+    print(str_sql)
     con = sql_connection()
     cursor_Obj = con.cursor()
     cursor_Obj.execute(str_sql)
     
-    if not cursor_Obj.fetchone():  # An empty result evaluates to False.
+    datos = cursor_Obj.fetchall()
+    
+    if not datos:  # An empty result evaluates to False.
         print("Login failed")
-        # con.close()
+        con.close()
         return False
     else:
         print("Welcome")
-        # con.close()
-        return True
+        con.close()
+        return datos
 
-def sql_signup():
-    return print('signup')
+def sql_signup(Correo, Username, Password):
+    str_sql = f"INSERT INTO Credenciales(correo, password, username) VALUES('{Correo}', '{Password}', '{Username}');"
+    print(str_sql)
+    
+    try:
+        con = sql_connection()
+        cursor_Obj = con.cursor()
+        cursor_Obj.execute(str_sql)
+        con.commit()
+        con.close()
+        return 'signup'
+    except Error:
+        print(Error)
+        return 'Error'

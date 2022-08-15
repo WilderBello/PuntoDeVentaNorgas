@@ -1,9 +1,10 @@
 create table Credenciales(
     id integer primary key autoincrement,
     correo varchar(50) unique not null,
-    password varchar not null
+    password varchar not null,
+    username varchar(50) not null
 );
 
-insert into Credenciales(correo, password) values('1@1.c', '1234');
-insert into Credenciales(correo, password) values('1@1.co', '1234');
+insert into Credenciales(correo, password, username) values('1@1.co', '1234', 'Wilder');
+insert into Credenciales(correo, password, username) values('1@1.com', '1234', 'Carlos');
 select * from Credenciales

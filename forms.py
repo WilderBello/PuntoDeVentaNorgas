@@ -8,7 +8,7 @@ class Usuarios(FlaskForm):
     Apellidos = StringField('Apellidos', validators=[DataRequired()])
     Celular = StringField('Celular', validators=[DataRequired()])
     Correo = StringField('Correo', validators=[DataRequired()], id="user")
-    Username = StringField('Username', validators=[DataRequired()])
+    Username = StringField('Username', validators=[DataRequired()], id="name")
     Password = StringField('Password', validators=[DataRequired()], id="password")
     iniciar = SubmitField('Iniciar Sesión')
     enviar = SubmitField('Registrarse')
