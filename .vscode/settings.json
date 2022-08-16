@@ -22,6 +22,8 @@
     "peacock.color": "#ff3d00",
     "cSpell.words": [
         "backref",
-        "nullable"
+        "direccion",
+        "nullable",
+        "telefono"
     ]
 }

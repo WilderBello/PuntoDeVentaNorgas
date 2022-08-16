@@ -219,6 +219,17 @@ fieldset {
     margin: 10px 0;
     padding: 0px;
 }
+.SEARCH form #buscar_cliente_bd {
+    width: 55%;
+    border: 1px solid #aaa;
+    outline: none;
+    text-align: left;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+.SEARCH form input:hover {
+    box-shadow: 0 0.1rem 0.4rem #2868c7;
+}
 .SEARCH .informacion { 
     overflow-x: auto;
 }

@@ -1,5 +1,5 @@
-from flask import Flask, request, flash, render_template, url_for, redirect, g, session
-from forms import Usuarios
+from flask import Flask, request, flash, render_template, url_for, redirect, session
+from forms import Usuarios, Crear, Buscar
 from settings.config import configuracion
 import basededatos as db
 
@@ -62,18 +62,21 @@ def home():
         flash('Error, debe iniciar sesion.')
         return redirect(url_for('login'))
 
-@app.route('/search')
+@app.route('/search', methods=['GET'])
 def search():
+    form = Buscar()
     if 'username' in session:
-        return render_template('search.html')
+        datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
+        return render_template('search.html', form = form, DatosUsuario = datos)
     else:
         flash('Error, debe iniciar sesión.')
         return redirect(url_for('login'))
 
-@app.route('/create')
+@app.route('/create', methods=['GET'])
 def create():
+    form = Crear()
     if 'username' in session:
-        return render_template('create.html')
+        return render_template('create.html', form = form)
     else:
         flash('Error, debe iniciar sesión.')
         return redirect(url_for('login'))
@@ -86,17 +89,45 @@ def about():
     else:
         flash('Error, debe iniciar sesión.')
         return redirect(url_for('login'))
-    
-
-@app.route('/create', methods=['POST'])
-def create_post():
-    flash('Pedido registrado correctamente')
-    return redirect(url_for('create'))
 
 @app.route('/search', methods=['POST'])
 def search_post():
-    flash('Usuario encontrado correctamente')
-    return redirect(url_for('search'))
+    form = Buscar()
+    Usuario = request.form["Cliente"]
+    datos = db.sql_select_usuario(Usuario)
+    print(datos)
+    if datos == []:
+        flash('Error, usuario no encontrado.')
+        datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
+        return redirect(url_for('search'))
+    else: 
+        flash('Usuario encontrado correctamente')
+        return render_template('search.html', form = form, DatosUsuario = datos)
+
+@app.route('/create', methods=['POST'])
+def create_post():
+    form = Crear()
+    nombre_vendedor = ''
+    if 'username' in session:
+        nombre_vendedor = session['username']
+    id_cliente = request.form["Documento"]
+    nombre_completo = request.form["Nombre"]
+    telefono = request.form["Telefono"]
+    direccion = request.form["Direccion"]
+    referencia_producto = form.Referencia.data
+    fecha_pedido = form.Fecha.data
+    num_producto = form.Numero.data
+    estado_producto = form.Estado.data
+    deuda = request.form["Deuda"]
+    anotaciones = request.form["Anotaciones"]
+    
+    id_pedido = db.sql_pedido(fecha_pedido, referencia_producto)
+    id_pedido = id_pedido[0]
+    id_pedido = id_pedido[0]
+    
+    db.sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
+    flash('Pedido registrado correctamente')
+    return redirect(url_for('create'))
 
 if __name__=='__main__':
     app.run(debug=True)

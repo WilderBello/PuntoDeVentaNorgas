@@ -6,56 +6,47 @@
             <fieldset>
             <legend>Crear pedido</legend>
             <section>
-                <label for="id_cliente">Documento cliente:</label>
-                <input type="text" id="id_cliente" name="id_cliente" />
+                {{form.Documento.label}}
+                {{form.Documento ()}}
             </section>
             <section>
-                <label for="name_cliente">Nombre de cliente:</label>
-                <input type="text" id="name_cliente" name="name_cliente" />
+                {{form.Nombre.label}}
+                {{form.Nombre ()}}
             </section>
             <section>
-                <label for="telefone_cliente">Telefono:</label>
-                <input type="text" id="telefone_cliente" name="telefone_cliente"/>
+                {{form.Telefono.label}}
+                {{form.Telefono ()}}
             </section>
             <section>
-                <label for="direccion_cliente">Dirección de cliente:</label>
-                <input type="text" id="direccion_cliente" name="direccion_cliente"/>
+                {{form.Direccion.label}}
+                {{form.Direccion ()}}
             </section>
             <section>
-                <label for="referencia_producto">Referencia:</label>
-                <input type="text" id="referencia_producto" name="referencia_producto"/>
+                {{form.Referencia.label}}
+                {{form.Referencia ()}}
             </section>
             <section>
-                <label for="fecha_pedido">Fecha:</label>
-                <input type="date" id="fecha_pedido" name="fecha_pedido"/>
+                {{form.Fecha.label}}
+                {{form.Fecha ()}}
             </section>
             <section>
-                <label for="num_productos">Numero de productos:</label>
-                <select name="num_productos" id="num_productos">
-                    <option value="uno">1</option>
-                    <option value="dos">2</option>
-                    <option value="tres">3</option>
-                    <option value="cuatro">4</option>
-                    <option value="cinco">5</option>
-                </select>
+                {{form.Numero.label}}
+                {{form.Numero()}}
             </section>
             <section>
-                <label for="estado_producto">Estado del producto:</label>
-                <select name="estado_producto" id="estado_producto">
-                    <option value="tiene">Tiene</option>
-                    <option value="no_tiene">No tiene</option>
-                </select>
+                {{form.Estado.label}}
+                {{form.Estado()}}
             </section>
             <section>
-                <label for="deuda">Deuda:</label>
-                <input type="text" id="deuda" name="deuda"/>
+                {{form.Deuda.label}}
+                {{form.Deuda()}}
             </section>
             <section>
-                <label for="anotaciones">Anotaciones:</label>
-                <input type="text" id="anotaciones" name="anotaciones"/>
+                {{form.Anotaciones.label}}
+                {{form.Anotaciones()}}
             </section>
             
-            <button type="submit" class="btn btn-1">Crear Pedido</button>
+            {{form.Crear (class="btn btn-1") }} {{form.hidden_tag()}}
             </fieldset>
         </form>
     </section>
