@@ -22,3 +22,5 @@ Búsqueda de prueba:
 
 Despliegue hasta el 18 de Noviembre: 
   - https://wilderbello.pythonanywhere.com/login
+
+Nota para futuros despliegues: from wtforms.fields.html5 import  EmailField,  SearchField
