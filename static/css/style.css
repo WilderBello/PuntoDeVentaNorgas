@@ -8,6 +8,7 @@ body {
     background-color: #ffffff;
     margin: 0;
 }
+
 .banner {
     display: block;
     background-color: #2868c7;
@@ -96,6 +97,7 @@ p {
     text-align: center;
     background-color: rgb(247, 231, 51);
 }
+
 /* Section Index */
 .index {
     background-color: #2868c7;

@@ -1,5 +1,10 @@
 import sqlite3 as sql
 from sqlite3 import Error
+from flask import Flask
+from flask_bcrypt import Bcrypt
+
+app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 def sql_connection():
     try:
@@ -9,7 +14,7 @@ def sql_connection():
         print(Error)
 
 def sql_login(correo, password):
-    str_sql = f"SELECT username FROM Credenciales WHERE correo = '{correo}' AND password = '{password}';"
+    str_sql = f"SELECT * FROM Credenciales WHERE correo = '{correo}';"
     print(str_sql)
     con = sql_connection()
     cursor_Obj = con.cursor()
@@ -17,14 +22,17 @@ def sql_login(correo, password):
     
     datos = cursor_Obj.fetchall()
     
-    if not datos:  # An empty result evaluates to False.
+    if datos != []:
+        if bcrypt.check_password_hash(datos[0][2], password) == True:
+            print("Welcome")
+            con.close()
+            return datos[0]
+        else:
+            return False
+    else:
         print("Login failed")
         con.close()
         return False
-    else:
-        print("Welcome")
-        con.close()
-        return datos
 
 def sql_signup(Correo, Username, Password):
     str_sql = f"INSERT INTO Credenciales(correo, password, username) VALUES('{Correo}', '{Password}', '{Username}');"
@@ -104,8 +112,7 @@ def sql_pedido(fecha_pedido, referencia_producto):
         cursor_Obj.execute(str_sql_id)
         datos = cursor_Obj.fetchall()
         con.close()
-        return datos
-        
+        return datos[0]
     except Error:
         return 'Error'
 

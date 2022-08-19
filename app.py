@@ -2,10 +2,11 @@ from flask import Flask, request, flash, render_template, url_for, redirect, ses
 from forms import Usuarios, Crear, Buscar
 from settings.config import configuracion
 import basededatos as db
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.config.from_object(configuracion)
-app.secret_key = 'asdsfsfwre'
+bcrypt = Bcrypt(app)
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
@@ -21,11 +22,9 @@ def login():
         
         if valor == False:
             flash('Correo y/o Password incorrect.')
-            return render_template('login.html', form = form)
+            return redirect(url_for('login'))
         else:
-            name = valor[0]
-            usuario = name[0]
-            session['username'] = usuario
+            session['username'] = valor[3]
             return redirect(url_for('home'))
         
 @app.route('/signup', methods=['GET', 'POST'])
@@ -33,18 +32,21 @@ def signup():
     form = Usuarios()
     if request.method =='GET':
         return render_template('signup.html', form = form)
+    
     elif request.method == 'POST':
         Correo = request.form["Correo"]
         Username = request.form["Username"]
         Password = request.form["Password"]
         
-        data = db.sql_signup(Correo, Username, Password)
+        pw_hash = bcrypt.generate_password_hash(password=Password).decode('utf8')
+        
+        data = db.sql_signup(Correo, Username, pw_hash)
         
         if data == 'signup':
-            flash('Usuario creado correctamente.')
+            flash(f"El usuario {Username} fue creado correctamente.")
             return redirect(url_for('signup'))
         else:
-            flash('Error, el usuario ya existe.')
+            flash('Error, el usuario {Username} ya existe.')
             return redirect(url_for('signup'))
 
 @app.route('/logout')
@@ -107,9 +109,11 @@ def search_post():
 @app.route('/create', methods=['POST'])
 def create_post():
     form = Crear()
+    
     nombre_vendedor = ''
     if 'username' in session:
         nombre_vendedor = session['username']
+        
     id_cliente = request.form["Documento"]
     nombre_completo = request.form["Nombre"]
     telefono = request.form["Telefono"]
@@ -122,7 +126,6 @@ def create_post():
     anotaciones = request.form["Anotaciones"]
     
     id_pedido = db.sql_pedido(fecha_pedido, referencia_producto)
-    id_pedido = id_pedido[0]
     id_pedido = id_pedido[0]
     
     db.sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)

@@ -12,47 +12,51 @@
                 {{form.Cliente (placeholder="Cédula usuario")}}
                 {{form.Buscar (class="btn btn-2")}}
             </form>
-
         </section>
         </fieldset>
-        <section class="informacion">
-            <table> 
-                <caption>Información del cliente</caption>
-                <thead>
-                    <tr>
-                        <th>Cédula</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Referencia del producto</th>
-                        <th># productos</th>
-                        <th>Estado</th>
-                        <th>Deuda</th>
-                        <th>Anotaciones</th>
-                        <th>Vendedor</th>
-                        <th># Pedido</th>
-                        <th>Fecha pedido</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for data in DatosUsuario %}
-                        <tr>
-                            <td>{{ data[1] }}</td>
-                            <td>{{ data[2] }}</td>
-                            <td>{{ data[3] }}</td>
-                            <td>{{ data[4] }}</td>
-                            <td>{{ data[5] }}</td>
-                            <td>{{ data[6] }}</td>
-                            <td>{{data[7] }}</td>
-                            <td>{{ data[8] }}</td>
-                            <td>{{ data[9] }}</td>
-                            <td>{{ data[10] }}</td>
-                            <td>{{ data[12] }}</td>
-                            <td>{{ data[13] }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
     </section>
 {% endblock menu %}
+
+{% block mostrar %}
+<section class="SEARCH">
+    <section class="informacion">
+        <table> 
+            <caption>Información del cliente</caption>
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Referencia del producto</th>
+                    <th># productos</th>
+                    <th>Estado</th>
+                    <th>Deuda</th>
+                    <th>Anotaciones</th>
+                    <th>Vendedor</th>
+                    <th># Pedido</th>
+                    <th>Fecha pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in DatosUsuario %}
+                    <tr>
+                        <td>{{ data[1] }}</td>
+                        <td>{{ data[2] }}</td>
+                        <td>{{ data[3] }}</td>
+                        <td>{{ data[4] }}</td>
+                        <td>{{ data[5] }}</td>
+                        <td>{{ data[6] }}</td>
+                        <td>{{data[7] }}</td>
+                        <td>{{ data[8] }}</td>
+                        <td>{{ data[9] }}</td>
+                        <td>{{ data[10] }}</td>
+                        <td>{{ data[12] }}</td>
+                        <td>{{ data[13] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</section>
+{% endblock mostrar %}

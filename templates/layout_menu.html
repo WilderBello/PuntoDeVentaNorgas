@@ -27,23 +27,22 @@
 
             {% block menu %}
             {% endblock menu %}
-            
-            {% endblock general %}
-            
+
             <section>
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <section class="aviso">
                         {{ messages[0] }}
-                        <script>
-                            function recarga() {
-                                window.location.reload(1);
-                            };
-                            setTimeout(recarga, 10000);
-                        </script>
                     </section>
                 {% endif %}
                 {% endwith %}
             </section>
+            
+            {% block mostrar %}
+            {% endblock mostrar %}
+
+            {% endblock general %}
+            
+            
     </body>
 </html>
