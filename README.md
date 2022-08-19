@@ -19,3 +19,6 @@ Credenciales de prueba:
 
 Búsqueda de prueba:
   - 1116804307
+
+Despliegue hasta el 18 de Noviembre: 
+  - https://wilderbello.pythonanywhere.com/login
