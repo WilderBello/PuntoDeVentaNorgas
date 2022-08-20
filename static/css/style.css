@@ -24,25 +24,11 @@ body {
     height: auto;
     border-radius: 5px;
 }
-h1 {
-    font-size: 24px;
-    text-align: center;
-    color: white;
-    float: right;
-    padding: 0px 10px;
+
+#menu, #menu-check {
+    display: none;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #2868c7;
-    border-right: 1px solid #ffffff;
-    border-radius: 5px;
-}
-li {
-    float: left;
-}
+
 li a {
     display: block;
     color: white;
@@ -50,17 +36,114 @@ li a {
     padding: 10px 16px;
     text-decoration: none;
     border-left: 1px solid #ffffff;
+    border: 1px solid #ffffff;
     border-radius: 5px;
 }
-.derecha {
-    float: right;
+
+@media (min-width:350px)  and (max-width:499.5px) { 
+    /* smartphones, Android phones, landscape iPhone */ 
+    h1 {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        float: right;
+        padding: 0px;
+        margin: 15px 20px;
+        width: 40%;
+    }
+
+    #menu-check:not(:checked) ~ nav {
+        display: none;
+    }
+
+    #menu-check:checked ~ nav {
+        display: block;
+    }
+
+    #menu {
+        display: block;
+        color: white;
+        background-color: #2868c7;
+        border: 1px solid #2868c7;
+        border-radius: 2px;
+        position: absolute;
+        right: 5px;
+        top: 25px;
+        z-index: 999;
+    }
+
+    #menu:hover {
+        color: #2868c7;
+        background-color: #ffffff;
+    }
+
+    #menu-cerrar {
+        display: none;
+    }
+
+    #menu-check:checked ~ label #menu-abrir {
+        display: none;
+    }
+
+    #menu-check:checked ~ label #menu-cerrar {
+        display: block;
+    }
+
+    ul {
+        position: absolute;
+        top: 63px;
+        right: 0px;
+        width: 50%;
+        background-color: #2868c7;
+        padding: 2px;
+        border-radius: 2px;
+        opacity: 0.95;
+        color: #ffffff;
+    }
+
 }
-ul .create {
-    border-right: 1px solid #ffffff;
+@media (min-width:500px)  { 
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ 
+    #menu, #menu-check {
+        display: none;
+    }
+    
+    h1 {
+        font-size: 24px;
+        text-align: center;
+        color: white;
+        float: right;
+        padding: 0px;
+        margin: 25px 10px;
+        width: auto;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #2868c7;
+        border-right: 1px solid #ffffff;
+        border-radius: 5px;
+    }
+    
+    li {
+        float: left;
+    }
+
+    .derecha {
+        float: right;
+    }
+    ul .create {
+        border-right: 1px solid #ffffff;
+    }
+    li a:hover {
+        background-color: #0a1fdd;
+    }
 }
-li a:hover {
-    background-color: #0a1fdd;
-}
+
+
 .buttons {
     text-align: center;
     margin: 30px;
@@ -160,15 +243,6 @@ p {
     text-align: center;
     outline: none;
 }
-/*.login button {
-    width: 100px;
-    height: 30px;
-    padding: 0 15px;
-    margin: 15px 150px;
-    border: 1px solid #aaa;
-    transition: box-shadow 0.3s ease;
-    border-radius: 5px;
-}*/
 /* Boton ingresar */
 .login .button {
     position: relative;
