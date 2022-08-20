@@ -43,6 +43,9 @@ li a {
 @media (min-width:350px)  and (max-width:499.5px) { 
     /* smartphones, Android phones, landscape iPhone */ 
     h1 {
+        position: absolute;
+        top:0;
+        right: 0;
         font-size: 20px;
         text-align: center;
         color: white;
@@ -90,6 +93,7 @@ li a {
     }
 
     ul {
+        list-style-type: none;
         position: absolute;
         top: 63px;
         right: 0px;
@@ -98,7 +102,6 @@ li a {
         padding: 2px;
         border-radius: 2px;
         opacity: 0.95;
-        color: #ffffff;
     }
 
 }
@@ -109,6 +112,9 @@ li a {
     }
     
     h1 {
+        position: absolute;
+        top:0;
+        right: 0;
         font-size: 24px;
         text-align: center;
         color: white;
