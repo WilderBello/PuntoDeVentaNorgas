@@ -11,6 +11,8 @@ bcrypt = Bcrypt(app)
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        session.pop('username')
     form = Usuarios()
     if request.method =='GET':
         return render_template('login.html', form = form)
