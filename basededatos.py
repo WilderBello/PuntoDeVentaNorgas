@@ -51,7 +51,6 @@ def sql_signup(Correo, Username, Password):
     
 def sql_select_usuario(usuario):
     str_sql = f"SELECT * FROM BaseDeDatos WHERE id_cliente='{usuario}'"
-    print(str_sql)
     
     try:
         con = sql_connection()
@@ -66,7 +65,6 @@ def sql_select_usuario(usuario):
     
 def sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido):
     
-    sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion)
     sql_update_cantidad(referencia_producto, num_producto)
     id_departamento = 1010
     id_emp = sql_emp()
@@ -83,7 +81,8 @@ def sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referen
         return 'Error'
 
 def sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion):
-    str_sql = f"INSERT INTO Cliente (id_cli, nombre_cli, telefono_cli, direccion_cli) values ('{id_cliente}', '{nombre_completo}', '{telefono}', '{direccion}');"
+    str_sql = f"INSERT INTO Cliente (id_cli, nombre_cli, telefono_cli, direccion_cli) VALUES ('{id_cliente}', '{nombre_completo}', '{telefono}', '{direccion}');"
+    print(str_sql)
     try:
         con = sql_connection()
         cursor_Obj = con.cursor()
@@ -96,9 +95,8 @@ def sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion):
 def sql_update_cantidad(referencia_producto, num_producto):
     pass
 
-def sql_pedido(fecha_pedido, referencia_producto):
-    str_sql = f"INSERT INTO Pedido (fecha_pedido_now, referencia_producto) VALUES ({fecha_pedido}, {referencia_producto});"
-    str_sql_id = f"SELECT id_pedido_now FROM Pedido WHERE id_pedido_now=(SELECT max(id_pedido_now) FROM Pedido);"
+def sql_crear_pedido(fecha_pedido, referencia_producto):
+    str_sql = f"INSERT INTO Pedido (fecha_pedido_now, referencia_producto) VALUES ('{fecha_pedido}', '{referencia_producto}');"
     
     try:
         con = sql_connection()
@@ -106,13 +104,19 @@ def sql_pedido(fecha_pedido, referencia_producto):
         cursor_Obj.execute(str_sql)
         con.commit()
         con.close()
-        
+    except Error:
+        return 'Error'
+    
+def sql_select_id(fecha_pedido):
+    str_sql_id = f"SELECT id_pedido_now FROM Pedido WHERE fecha_pedido_now='{fecha_pedido}';"
+    
+    try:
         con = sql_connection()
         cursor_Obj = con.cursor()
         cursor_Obj.execute(str_sql_id)
         datos = cursor_Obj.fetchall()
         con.close()
-        return datos[0]
+        return datos
     except Error:
         return 'Error'
 

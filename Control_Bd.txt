@@ -1,0 +1,12 @@
+delete from BaseDeDatos;
+delete from Venta;
+delete from Cliente;
+delete from Pedido;
+
+select * from Cliente;
+select * from Empresa;
+select * from Pedido;
+select * from BaseDeDatos;
+
+select * from Venta;
+select * from Producto;

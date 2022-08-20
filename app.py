@@ -127,10 +127,16 @@ def create_post():
     deuda = request.form["Deuda"]
     anotaciones = request.form["Anotaciones"]
     
-    id_pedido = db.sql_pedido(fecha_pedido, referencia_producto)
-    id_pedido = id_pedido[0]
+    db.sql_crear_pedido(fecha_pedido, referencia_producto)
+    id_pedido_data = db.sql_select_id(fecha_pedido)
+    id_pedido = id_pedido_data[len(id_pedido_data)-1][0]
+    
+    datos = db.sql_select_usuario(id_cliente)
+    if datos == []:
+        db.sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion)
     
     db.sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
+    
     flash('Pedido registrado correctamente')
     return redirect(url_for('create'))
 
