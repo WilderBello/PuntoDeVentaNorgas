@@ -67,9 +67,7 @@ def sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referen
     
     sql_update_cantidad(referencia_producto, num_producto)
     id_departamento = 1010
-    id_emp = sql_emp()
-    sql_venta(id_emp, id_departamento, id_cliente)
-    # id_pedido id_departamento
+    
     str_sql = f"INSERT INTO BaseDeDatos (id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, nombre_vendedor, id_departamento, id_pedido, fecha_pedido) VALUES ('{id_cliente}', '{nombre_completo}', '{telefono}', '{direccion}','{referencia_producto}', '{num_producto}', '{estado_producto}', '{deuda}', '{anotaciones}', '{nombre_vendedor}', '{id_departamento}', '{id_pedido}', '{fecha_pedido}');"
     try:
         con = sql_connection()
@@ -125,4 +123,10 @@ def sql_emp():
     pass
 
 def sql_venta(id_emp, id_departamento, id_cliente):
+    pass
+
+def sql_update():
+    pass
+
+def sql_delete():
     pass
