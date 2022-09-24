@@ -43,7 +43,7 @@
                 </label>
 
                 <nav>
-                    <section  class="container-fluid border rounded-bottom position-absolute">
+                    <section  class="container-fluid rounded-bottom position-absolute">
                         <div class="d-flex justify-content-end">
                             <div class="btn-group-vertical" role="group">
                                 <a class="btn btn-secondary bg-primary border" href="/home">Inicio</a>
@@ -68,9 +68,8 @@
             <section class="border rounded">
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <section class="alert alert-warning" role="alert">
+                    <section class="alert alert-warning position-static">
                         <strong>{{ messages[0] }}</strong>
-                        
                     </section>
                 {% endif %}
                 {% endwith %}
