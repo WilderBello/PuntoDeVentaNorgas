@@ -2,17 +2,17 @@
 
 {% block general %}
 <fieldset>
-    <legend>Inicio</legend>
 {% block usuario %}
-<p class="title">
-    Bienvenido, {{username}}!
-</p>
+<section class="d-flex">
+    <h5 class="p-0 m-4">Bienvenido, {{username}}!</h5>
+</section>
+
 {% endblock usuario %}
 {% block menu %}
 <section class="HOME">
-    <section class="buttons">
-        <a class="btn" href="/search">Buscar Usuario</a>
-        <a class="btn" href="/create">Crear pedido</a>
+    <section class="d-flex justify-content-center">
+        <a class="btn btn-secondary float-left bg-primary border" href="/search">Buscar Usuario</a>
+        <a class="btn btn-secondary float-left bg-primary border" href="/create">Crear pedido</a>
     </section>
 </section>
 {% endblock menu %}

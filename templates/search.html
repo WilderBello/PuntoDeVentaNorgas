@@ -2,40 +2,46 @@
 
 {% block menu %}
     <section class="SEARCH">
-        <fieldset>
-        <legend>Buscar</legend>
-            
-        <section class="buscar_cliente">
+        <section class="d-flex justify-content-center p-3">
 
             <form action="/search" method="POST">
-                <label for="buscar_cliente_bd">Buscar cliente:</label>
-                {{form.Cliente (placeholder="Cédula usuario")}}
-                {{form.Buscar (class="btn btn-2")}}
+                <section class="form-group form-row">
+                    {{form.Cliente.label (class="col-sm-5 col-form-label")}}
+                    {{form.Cliente (class="form-control", placeholder="Cédula usuario")}}
+                </section>
+
+                <section class="d-flex justify-content-center">
+                    {{form.Buscar (class="btn btn-primary float-left bg-primary border")}}
+
+                    {% if usuario_existe == True %}
+                        <a class="btn btn-secondary bg-primary border" href="/modify">Modificar último pedido</a>
+                    {% endif %}
+                </section>
             </form>
+
         </section>
-        </fieldset>
     </section>
 {% endblock menu %}
 
 {% block mostrar %}
 <section class="SEARCH">
-    <section class="informacion">
-        <table> 
+    <section class="table-responsive">
+        <table class="table"> 
             <caption>Información del cliente</caption>
             <thead>
-                <tr>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Referencia del producto</th>
-                    <th># productos</th>
-                    <th>Estado</th>
-                    <th>Deuda</th>
-                    <th>Anotaciones</th>
-                    <th>Vendedor</th>
-                    <th># Pedido</th>
-                    <th>Fecha pedido</th>
+                <tr class="bg-primary text-white border">
+                    <th class="border">Cédula</th>
+                    <th class="border">Nombre</th>
+                    <th class="border">Teléfono</th>
+                    <th class="border">Dirección</th>
+                    <th class="border">Referencia del producto</th>
+                    <th class="border"># productos</th>
+                    <th class="border">Estado</th>
+                    <th class="border">Deuda</th>
+                    <th class="border">Anotaciones</th>
+                    <th class="border">Vendedor</th>
+                    <th class="border"># Pedido</th>
+                    <th class="border">Fecha pedido</th>
                 </tr>
             </thead>
             <tbody>

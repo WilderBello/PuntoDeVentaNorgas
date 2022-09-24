@@ -7,28 +7,53 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo_icon.ico') }}" type="image/x-icon">
         <title>Punto de venta</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-            <section class="banner">
-                <a  href="/home"><img class="logo" src="{{ url_for('static', filename='img/NORGAS.jpg')}}" alt="Inicio" width="60" height="60" /></a>
-                <a  href="/home"><h1>Punto de venta Puerto Rondón</h1></a>
+            <section class="container-fluid bg-primary border">
+                <div class="row align-items-center">
+                    <div class="col w-25">
+                        <a  href="/home"><img src="{{ url_for('static', filename='img/NORGAS.jpg')}}" alt="Inicio" width="60" height="60" /></a>
+                    </div>
+                    <div class="col text-right border-0 w-75">
+                        <a href="/home" class="btn border-0 text-white"><h6>Punto de venta Puerto Rondón</h6></a>
+                    </div>
+                </div>
             </section>
 
-            <section>
+            <section  class="container-fluid bg-primary border rounded-bottom d-none d-sm-block">
+                <div class="row bg-primary border">
+                    <div class="btn-group mr-auto" role="group" aria-label="First group">
+                        <a class="btn btn-secondary bg-primary border" href="/home">Inicio</a>
+                        <a class="btn btn-secondary bg-primary border" href="/search">Buscar</a>
+                        <a class="btn btn-secondary bg-primary border" href="/create">Crear</a>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Second group">
+                        <a class="btn btn-secondary bg-primary border" href="/logout">Cerrar Sesión</a>
+                        <a class="btn btn-secondary bg-primary border" href="/about">Acerca de</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="d-block d-sm-none bg-primary">
                 <input type="checkbox" id="menu-check">
-                <label id="menu" for="menu-check">
-                    <span id="menu-abrir">&#9776;</span>
-                    <span id="menu-cerrar">X</span>
+                <label id="menu" for="menu-check" class="bg-primary">
+                    <span id="menu-abrir" class="bg-primary text-white">&#9776;</span>
+                    <span id="menu-cerrar" class="bg-primary text-white">x</span>
                 </label>
 
                 <nav>
-                    <ul class="links">
-                        <li><a class="home"  href="/home">Inicio</a></li>
-                        <li><a class="search"  href="/search">Buscar</a></li>
-                        <li><a class="create" href="/create">Crear</a></li>
-                        <li class="derecha"><a class="close_session" href="/logout">Cerrar Sesión</a></li>
-                        <li class="derecha"><a class="about" href="/about">Acerca de</a></li>
-                    </ul>
+                    <section  class="container-fluid border rounded-bottom position-absolute">
+                        <div class="d-flex justify-content-end">
+                            <div class="btn-group-vertical" role="group">
+                                <a class="btn btn-secondary bg-primary border" href="/home">Inicio</a>
+                                <a class="btn btn-secondary bg-primary border" href="/search">Buscar</a>
+                                <a class="btn btn-secondary bg-primary border" href="/create">Crear</a>
+                                <a class="btn btn-secondary bg-primary border" href="/logout">Cerrar Sesión</a>
+                                <a class="btn btn-secondary bg-primary border" href="/about">Acerca de</a>
+                            </div>
+                        </div>
+                    </section>
                 </nav>
         </section>
 
@@ -40,11 +65,12 @@
             {% block menu %}
             {% endblock menu %}
 
-            <section>
+            <section class="border rounded">
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <section class="aviso">
-                        {{ messages[0] }}
+                    <section class="alert alert-warning" role="alert">
+                        <strong>{{ messages[0] }}</strong>
+                        
                     </section>
                 {% endif %}
                 {% endwith %}

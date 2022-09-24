@@ -2,33 +2,37 @@
 
 {% block menu %}
     <section class="p-4 d-flex justify-content-center">
-        <form action="/create" method="POST">
+        <form action="/modify" method="POST">
             <div class="form-group form-row">
-                {{form.Documento.label ()}}
+                {{form.Id_pedido.label}}
+                {{form.Id_pedido (class="form-control")}}
+            </div>
+            <div class="form-group form-row">
+                {{form.Documento.label}}
                 {{form.Documento (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Nombre.label ()}}
+                {{form.Nombre.label}}
                 {{form.Nombre (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Telefono.label()}}
+                {{form.Telefono.label}}
                 {{form.Telefono (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Direccion.label ()}}
+                {{form.Direccion.label}}
                 {{form.Direccion (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Referencia.label()}}
+                {{form.Referencia.label}}
                 {{form.Referencia (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Fecha.label ()}}
+                {{form.Fecha.label}}
                 {{form.Fecha (class="form-control")}}
             </div>
             <div class="form-group form-row">
-                {{form.Numero.label()}}
+                {{form.Numero.label}}
                 {{form.Numero(class="form-control")}}
             </div>
             <div class="form-group form-row">
@@ -43,8 +47,9 @@
                 {{form.Anotaciones.label}}
                 {{form.Anotaciones(class="form-control")}}
             </div>
+            
             <div class="d-flex justify-content-center">
-                {{form.Crear (class="btn btn-primary bg-primary border") }} {{form.hidden_tag()}}
+                {{form.Modificar (class="btn btn-secondary float-left bg-primary border") }} {{form.hidden_tag()}}
             </div>
         </form>
     </section>
