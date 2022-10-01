@@ -1,6 +1,6 @@
 from __future__ import print_function
-from flask import Flask, request, flash, render_template, url_for, redirect, session
-from forms import Usuarios, Crear, Buscar, Modificar
+from flask import Flask, request, flash, render_template, url_for, redirect, session, g
+from forms import Borrar, Usuarios, Crear, Buscar, Modificar
 from settings.config import configuracion
 import basededatos as db
 from flask_bcrypt import Bcrypt
@@ -31,11 +31,11 @@ def login():
         else:
             nombre = valor[3]
             
-            global Perfil_Vendedor 
-            Perfil_Vendedor = Vendedor(nombre, Correo)
+            global Datos_Vendedor
+            Datos_Vendedor = Vendedor(nombre, Correo)
             
-            session['username'] = Perfil_Vendedor.get_name()
-            session['email'] = Perfil_Vendedor.get_email()
+            session['username'] = nombre
+            session['email'] = Correo
             
             return redirect(url_for('home'))
         
@@ -98,8 +98,10 @@ def search():
         else: 
             form = Buscar()
             
+            i = (len(datos)) - 1
+            
             global Datos_Cliente 
-            Datos_Cliente = Cliente(datos[0][1], datos[0][2], datos[0][3], datos[0][4], datos[0][5], datos[0][7], datos[0][8], datos[0][9], datos[0][10], datos[0][12], datos[0][13])
+            Datos_Cliente = Cliente(datos[i][1], datos[i][2], datos[i][3], datos[i][4], datos[i][5], datos[i][7], datos[i][8], datos[i][9], datos[i][10], datos[i][12], datos[i][13])
             print(Datos_Cliente)
             flash('Usuario encontrado correctamente')
             
@@ -116,7 +118,8 @@ def create():
             return redirect(url_for('login'))
         
     elif request.method == 'POST':
-        nombre_vendedor = Perfil_Vendedor.get_name()
+        nombre_vendedor = Datos_Vendedor.get_name()
+        print(nombre_vendedor)
         
         id_cliente = request.form["Documento"]
         nombre_completo = request.form["Nombre"]
@@ -155,14 +158,17 @@ def modificar():
     form = Modificar()
     if request.method =='GET':
         if 'username' in session:
-            return render_template('modify.html', form = form)
+            usuario = [Datos_Cliente.get_id_pedido(), Datos_Cliente.get_document(), Datos_Cliente.get_name(), Datos_Cliente.get_telf(), Datos_Cliente.get_direccion(), Datos_Cliente.get_ref(), Datos_Cliente.get_fecha_pedido(), Datos_Cliente.get_estado(), Datos_Cliente.get_deuda(), Datos_Cliente.get_anotacion()]
+            print(usuario)
+            return render_template('modify.html', form = form, datos = usuario)
         else:
             flash('Error, debe iniciar sesión.')
             return redirect(url_for('login'))
         
     if request.method == 'POST':
         
-        nombre_vendedor = Perfil_Vendedor.get_name()
+        nombre_vendedor = Datos_Vendedor.get_name()
+        id_pedido = request.form["Id_pedido"]
         id_cliente = request.form["Documento"]
         nombre_completo = request.form["Nombre"]
         telefono = request.form["Telefono"]
@@ -174,18 +180,23 @@ def modificar():
         deuda = request.form["Deuda"]
         anotaciones = request.form["Anotaciones"]
         
-        db.sql_crear_pedido(fecha_pedido, referencia_producto)
-        id_pedido_data = db.sql_select_id(fecha_pedido)
-        id_pedido = id_pedido_data[len(id_pedido_data)-1][0]
-        
-        datos = db.sql_select_usuario(id_cliente)
-        if datos == []:
-            db.sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion)
-        
-        db.sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
+        db.sql_update(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
         
         flash('Pedido modificado correctamente')
-        return redirect(url_for('create'))
+        return redirect(url_for('search'))
+
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    form = Borrar()
+    pedido = Datos_Cliente.get_id_pedido()
+    if request.method =='GET':
+        return render_template('delete.html', form=form, id_pedido=pedido)
+    
+    if request.method == 'POST':
+        db.sql_delete(pedido)
+        flash('Pedido eliminado correctamente')
+        return redirect(url_for('search'))
+
 
 if __name__=='__main__':
     app.run(debug=True)

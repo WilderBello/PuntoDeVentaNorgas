@@ -125,8 +125,31 @@ def sql_emp():
 def sql_venta(id_emp, id_departamento, id_cliente):
     pass
 
-def sql_update():
-    pass
+def sql_update(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido):
+    str_sql = f'''UPDATE BaseDeDatos SET id_cliente='{id_cliente}', nombre_completo='{nombre_completo}', telefono='{telefono}', direccion='{direccion}', 
+                    referencia_producto='{referencia_producto}', num_producto='{num_producto}', estado_producto='{estado_producto}', deuda='{deuda}',
+                    anotaciones='{anotaciones}', nombre_vendedor='{nombre_vendedor}', fecha_pedido='{fecha_pedido}'
+                    WHERE id_pedido='{id_pedido}' '''
+    #print(str_sql)
+    try:
+        con = sql_connection()
+        cursor_Obj = con.cursor()
+        cursor_Obj.execute(str_sql)
+        con.commit()
+        con.close()
+        #print('UPDATE')
+    except Error:
+        return 'Error'
 
-def sql_delete():
-    pass
+def sql_delete(id_pedido):
+    str_sql = f'DELETE FROM BaseDeDatos WHERE id_pedido={id_pedido}'
+    #print(str_sql)
+    try:
+        con = sql_connection()
+        cursor_Obj = con.cursor()
+        cursor_Obj.execute(str_sql)
+        con.commit()
+        con.close()
+        #print('DELETE')
+    except Error:
+        return 'Error'

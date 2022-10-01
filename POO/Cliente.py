@@ -19,7 +19,7 @@ class Cliente(Persona):
         return super().get_name()    
     
     def get_document(self):
-        return self.documentation
+        return self.document
     
     def get_telf(self):
         return self.telf

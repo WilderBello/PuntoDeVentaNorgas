@@ -1,0 +1,16 @@
+{% extends "layout_menu.html" %}
+
+{% block menu %}
+<section class="ABOUT text-justify">
+    <legend>Eliminar pedido: {{ id_pedido}}</legend>
+    <p>¿Está seguro que desea eliminar el pedido #{{ id_pedido }}?</p>
+    <p>Luego de realizada la operación no se podrá recuperar la información eliminada.</p>
+
+    <form action="/delete" method="POST">
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-secondary bg-primary border" href="/search">Cancelar</a>
+            {{form.Delete (class="btn btn-primary bg-primary border") }} {{form.hidden_tag()}}
+        </div>
+    </form>
+</section>
+{% endblock menu %}

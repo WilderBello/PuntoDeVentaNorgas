@@ -26,7 +26,7 @@ class Buscar(FlaskForm):
     Cliente = SearchField('Documento:', validators=[DataRequired()], id="buscar_cliente_bd")
     Buscar = SubmitField('Buscar')
 class Modificar(FlaskForm):
-    Id_pedido = SelectField('Modificar Pedido:', validate_choice=True, choices=[], id="Id_pedido")   
+    Id_pedido = SelectField('Modificar Pedido Número:', validate_choice=True, choices=[], id="Id_pedido")   
     Documento = StringField('Documento cliente:', validators=[DataRequired()], id="id_cliente")
     Nombre = StringField('Nombre de cliente:', validators=[DataRequired()], id="name_cliente")
     Telefono = StringField('Teléfono:', validators=[DataRequired()], id="telefone_cliente")
@@ -38,3 +38,6 @@ class Modificar(FlaskForm):
     Deuda = StringField('Deuda:', validators=[DataRequired()], id="deuda")
     Anotaciones = StringField('Anotaciones:', id="anotaciones")
     Modificar = SubmitField('Modificar Pedido')
+
+class Borrar(FlaskForm):
+    Delete = SubmitField('Eliminar definitivamente.')
