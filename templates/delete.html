@@ -6,7 +6,7 @@
     <p>¿Está seguro que desea eliminar el pedido #{{ id_pedido }}?</p>
     <p>Luego de realizada la operación no se podrá recuperar la información eliminada.</p>
 
-    <form action="/delete" method="POST">
+    <form action="/delete/{{ id_pedido }}" method="POST">
         <div class="d-flex justify-content-center">
             <a class="btn btn-secondary bg-primary border" href="/search">Cancelar</a>
             {{form.Delete (class="btn btn-primary bg-primary border") }} {{form.hidden_tag()}}

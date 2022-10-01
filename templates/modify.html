@@ -3,7 +3,7 @@
 {% block menu %}
 
     <section class="p-4 d-flex justify-content-center">
-        <form action="/modify" method="POST">
+        <form action="/modify/{{ datos[0] }}" method="POST">
             <div class="form-group form-row">
                 {{form.Id_pedido.label}}
                 <input type="text" name="Id_pedido" id="Id_pedido" class="form-control" value="{{ datos[0] }}" readonly>
@@ -51,7 +51,7 @@
             
             <div class="d-flex justify-content-center">
                 {{form.Modificar (class="btn btn-primary float-left bg-primary border") }} {{form.hidden_tag()}}
-                <a class="btn btn-secondary bg-primary border" href="/delete">Eliminar pedido</a>
+                <a class="btn btn-secondary bg-primary border" href="/delete/{{ datos[0] }}">Eliminar pedido</a>
             </div>
         </form>
     </section>

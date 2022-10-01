@@ -14,7 +14,7 @@
                     {{form.Buscar (class="btn btn-primary float-left bg-primary border")}}
 
                     {% if usuario_existe == True %}
-                        <a class="btn btn-secondary bg-primary border" href="/modify">Modificar último pedido</a>
+                        <!--a class="btn btn-secondary bg-primary border" href="/modify">Modificar último pedido</a -->
                     {% endif %}
                 </section>
             </form>
@@ -34,14 +34,15 @@
                     <th class="border">Nombre</th>
                     <th class="border">Teléfono</th>
                     <th class="border">Dirección</th>
-                    <th class="border">Referencia del producto</th>
-                    <th class="border"># productos</th>
+                    <th class="border">Ref. del producto</th>
+                    <th class="border">Num. Productos</th>
                     <th class="border">Estado</th>
                     <th class="border">Deuda</th>
                     <th class="border">Anotaciones</th>
                     <th class="border">Vendedor</th>
-                    <th class="border"># Pedido</th>
+                    <th class="border">Num. Pedido</th>
                     <th class="border">Fecha pedido</th>
+                    <th class="border"></th>
                 </tr>
             </thead>
             <tbody>
@@ -53,12 +54,15 @@
                         <td>{{ data[4] }}</td>
                         <td>{{ data[5] }}</td>
                         <td>{{ data[6] }}</td>
-                        <td>{{data[7] }}</td>
+                        <td>{{ data[7] }}</td>
                         <td>{{ data[8] }}</td>
                         <td>{{ data[9] }}</td>
                         <td>{{ data[10] }}</td>
                         <td>{{ data[12] }}</td>
                         <td>{{ data[13] }}</td>
+                        {%if data[1] != 'Null' %}
+                            <td><a class="btn btn-secondary bg-primary border" href="/modify/{{ data[12] }}">Modificar</a></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

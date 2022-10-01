@@ -15,7 +15,7 @@ def sql_connection():
 
 def sql_login(correo, password):
     str_sql = f"SELECT * FROM Credenciales WHERE correo = '{correo}';"
-    print(str_sql)
+    #print(str_sql)
     con = sql_connection()
     cursor_Obj = con.cursor()
     cursor_Obj.execute(str_sql)
@@ -36,7 +36,7 @@ def sql_login(correo, password):
 
 def sql_signup(Correo, Username, Password):
     str_sql = f"INSERT INTO Credenciales(correo, password, username) VALUES('{Correo}', '{Password}', '{Username}');"
-    print(str_sql)
+    #print(str_sql)
     
     try:
         con = sql_connection()
@@ -46,7 +46,7 @@ def sql_signup(Correo, Username, Password):
         con.close()
         return 'signup'
     except Error:
-        print(Error)
+        #print(Error)
         return 'Error'
     
 def sql_select_usuario(usuario):
@@ -60,7 +60,7 @@ def sql_select_usuario(usuario):
         con.close()
         return datos
     except Error:
-        print(Error)
+        #print(Error)
         return 'Error'
     
 def sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido):
@@ -80,7 +80,7 @@ def sql_agregar_pedido(id_cliente, nombre_completo, telefono, direccion, referen
 
 def sql_agregar_cliente(id_cliente, nombre_completo, telefono, direccion):
     str_sql = f"INSERT INTO Cliente (id_cli, nombre_cli, telefono_cli, direccion_cli) VALUES ('{id_cliente}', '{nombre_completo}', '{telefono}', '{direccion}');"
-    print(str_sql)
+    #print(str_sql)
     try:
         con = sql_connection()
         cursor_Obj = con.cursor()
@@ -118,7 +118,6 @@ def sql_select_id(fecha_pedido):
     except Error:
         return 'Error'
 
-
 def sql_emp():
     pass
 
@@ -152,4 +151,18 @@ def sql_delete(id_pedido):
         con.close()
         #print('DELETE')
     except Error:
+        return 'Error'
+
+def sql_select_pedido(pedido):
+    str_sql = f"SELECT * FROM BaseDeDatos WHERE id_pedido='{pedido}'"
+    
+    try:
+        con = sql_connection()
+        cursor_Obj = con.cursor()
+        cursor_Obj.execute(str_sql)
+        datos = cursor_Obj.fetchall()
+        con.close()
+        return datos
+    except Error:
+        #print(Error)
         return 'Error'

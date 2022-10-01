@@ -1,5 +1,5 @@
 from __future__ import print_function
-from flask import Flask, request, flash, render_template, url_for, redirect, session, g
+from flask import Flask, request, flash, render_template, url_for, redirect, session
 from forms import Borrar, Usuarios, Crear, Buscar, Modificar
 from settings.config import configuracion
 import basededatos as db
@@ -31,9 +31,6 @@ def login():
         else:
             nombre = valor[3]
             
-            global Datos_Vendedor
-            Datos_Vendedor = Vendedor(nombre, Correo)
-            
             session['username'] = nombre
             session['email'] = Correo
             
@@ -58,7 +55,7 @@ def signup():
             flash(f"El usuario {Username} fue creado correctamente.")
             return redirect(url_for('signup'))
         else:
-            flash('Error, el usuario {Username} ya existe.')
+            flash(f'Error, el usuario {Username} ya existe.')
             return redirect(url_for('signup'))
 
 @app.route('/logout')
@@ -89,7 +86,7 @@ def search():
     elif request.method == 'POST':
         Usuario = request.form["Cliente"]
         datos = db.sql_select_usuario(Usuario)
-        print(datos)
+        
         if datos == []:
             flash('Error, usuario no encontrado.')
             datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
@@ -98,18 +95,19 @@ def search():
         else: 
             form = Buscar()
             
-            i = (len(datos)) - 1
+            datos_ordenados = datos.copy()
+            datos_ordenados.reverse()
             
-            global Datos_Cliente 
-            Datos_Cliente = Cliente(datos[i][1], datos[i][2], datos[i][3], datos[i][4], datos[i][5], datos[i][7], datos[i][8], datos[i][9], datos[i][10], datos[i][12], datos[i][13])
-            print(Datos_Cliente)
             flash('Usuario encontrado correctamente')
             
-            return render_template('search.html', form = form, DatosUsuario = datos, usuario_existe = True)
+            return render_template('search.html', form = form, DatosUsuario = datos_ordenados, usuario_existe = True)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     form = Crear()
+    
+    Datos_Vendedor = Vendedor(session['username'], session['email'])
+    
     if request.method =='GET':
         if 'username' in session:
             return render_template('create.html', form = form)
@@ -153,42 +151,57 @@ def about():
         flash('Error, debe iniciar sesión.')
         return redirect(url_for('login'))
 
-@app.route('/modify', methods=['GET', 'POST'])
-def modificar():
+@app.route('/modify/<pedido>', methods=['GET', 'POST'])
+def modificar(pedido):
     form = Modificar()
-    if request.method =='GET':
-        if 'username' in session:
-            usuario = [Datos_Cliente.get_id_pedido(), Datos_Cliente.get_document(), Datos_Cliente.get_name(), Datos_Cliente.get_telf(), Datos_Cliente.get_direccion(), Datos_Cliente.get_ref(), Datos_Cliente.get_fecha_pedido(), Datos_Cliente.get_estado(), Datos_Cliente.get_deuda(), Datos_Cliente.get_anotacion()]
-            print(usuario)
-            return render_template('modify.html', form = form, datos = usuario)
-        else:
-            flash('Error, debe iniciar sesión.')
-            return redirect(url_for('login'))
+    
+    Datos_Vendedor = Vendedor(session['username'], session['email'])
+    
+    data = db.sql_select_pedido(pedido)
+    data = data[0]
+    print(data)
+    print(len(data))
+    Datos_Cliente = Cliente(data[1], data[2], data[3], data[4], data[5], data[7], data[8], data[9], data[10], data[12], data[13])
+    
+    try:
+        if request.method =='GET':
         
-    if request.method == 'POST':
+            if 'username' in session:
+                usuario = [Datos_Cliente.get_id_pedido(), Datos_Cliente.get_document(), Datos_Cliente.get_name(), Datos_Cliente.get_telf(), 
+                        Datos_Cliente.get_direccion(), Datos_Cliente.get_ref(), Datos_Cliente.get_fecha_pedido(), Datos_Cliente.get_estado(), 
+                        Datos_Cliente.get_deuda(), Datos_Cliente.get_anotacion()]
+                
+                return render_template('modify.html', form = form, datos = usuario)
+            else:
+                flash('Error, debe iniciar sesión.')
+                return redirect(url_for('login'))
         
-        nombre_vendedor = Datos_Vendedor.get_name()
-        id_pedido = request.form["Id_pedido"]
-        id_cliente = request.form["Documento"]
-        nombre_completo = request.form["Nombre"]
-        telefono = request.form["Telefono"]
-        direccion = request.form["Direccion"]
-        referencia_producto = form.Referencia.data
-        fecha_pedido = form.Fecha.data
-        num_producto = form.Numero.data
-        estado_producto = form.Estado.data
-        deuda = request.form["Deuda"]
-        anotaciones = request.form["Anotaciones"]
-        
-        db.sql_update(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
-        
-        flash('Pedido modificado correctamente')
-        return redirect(url_for('search'))
+        if request.method == 'POST':
+            
+            nombre_vendedor = Datos_Vendedor.get_name()
+            id_pedido = request.form["Id_pedido"]
+            id_cliente = request.form["Documento"]
+            nombre_completo = request.form["Nombre"]
+            telefono = request.form["Telefono"]
+            direccion = request.form["Direccion"]
+            referencia_producto = form.Referencia.data
+            fecha_pedido = form.Fecha.data
+            num_producto = form.Numero.data
+            estado_producto = form.Estado.data
+            deuda = request.form["Deuda"]
+            anotaciones = request.form["Anotaciones"]
+            
+            db.sql_update(id_cliente, nombre_completo, telefono, direccion, referencia_producto, num_producto, estado_producto, deuda, anotaciones, id_pedido, nombre_vendedor, fecha_pedido)
+            
+            flash('Pedido modificado correctamente')
+            return redirect(url_for('search'))
+    except:
+            return redirect(url_for('search'))
 
-@app.route('/delete', methods=['GET', 'POST'])
-def delete():
+@app.route('/delete/<int:pedido>', methods=['GET', 'POST'])
+def delete(pedido):
     form = Borrar()
-    pedido = Datos_Cliente.get_id_pedido()
+    
     if request.method =='GET':
         return render_template('delete.html', form=form, id_pedido=pedido)
     
