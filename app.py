@@ -211,8 +211,8 @@ def delete(pedido):
         return redirect(url_for('search'))
 
 
-if __name__=='__main__':
-    app.run(debug=True)
+#if __name__=='__main__':
+#    app.run(debug=True)
     
 def api():
     pass
