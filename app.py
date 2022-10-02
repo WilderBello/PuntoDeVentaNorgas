@@ -73,11 +73,18 @@ def home():
         return redirect(url_for('login'))
 
 @app.route('/search', methods=['GET', 'POST'])
-def search():
+@app.route('/search/<documento>', methods=['GET', 'POST'])
+def search(documento=''):
+    form = Buscar()
+    
     if request.method =='GET':
         if 'username' in session:
-            form = Buscar()
-            datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
+            if documento != '':
+                Usuario = documento
+                datos = db.sql_select_usuario(Usuario)
+                form.Buscar.data = Usuario
+            else:
+                datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
             return render_template('search.html', form = form, DatosUsuario = datos, usuario_existe = False)
         else:
             flash('Error, debe iniciar sesión.')
@@ -93,7 +100,6 @@ def search():
             
             return redirect(url_for('search'))
         else: 
-            form = Buscar()
             
             datos_ordenados = datos.copy()
             datos_ordenados.reverse()
@@ -117,7 +123,7 @@ def create():
         
     elif request.method == 'POST':
         nombre_vendedor = Datos_Vendedor.get_name()
-        print(nombre_vendedor)
+        #print(nombre_vendedor)
         
         id_cliente = request.form["Documento"]
         nombre_completo = request.form["Nombre"]
@@ -159,8 +165,7 @@ def modificar(pedido):
     
     data = db.sql_select_pedido(pedido)
     data = data[0]
-    print(data)
-    print(len(data))
+    
     Datos_Cliente = Cliente(data[1], data[2], data[3], data[4], data[5], data[7], data[8], data[9], data[10], data[12], data[13])
     
     try:

@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+        <section class="sticky-top">
             <section class="container-fluid bg-primary border">
                 <div class="row align-items-center">
                     <div class="col w-25">
@@ -55,15 +56,12 @@
                         </div>
                     </section>
                 </nav>
+            </section>
         </section>
-
             {% block general %}
             
             {% block usuario %}
             {% endblock usuario %}
-
-            {% block menu %}
-            {% endblock menu %}
 
             <section class="border rounded">
                 {% with messages = get_flashed_messages() %}
@@ -74,6 +72,9 @@
                 {% endif %}
                 {% endwith %}
             </section>
+
+            {% block menu %}
+            {% endblock menu %}
             
             {% block mostrar %}
             {% endblock mostrar %}

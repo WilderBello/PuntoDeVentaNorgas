@@ -4,6 +4,8 @@
 
     <section class="p-4 d-flex justify-content-center">
         <form action="/modify/{{ datos[0] }}" method="POST">
+            <a class="btn btn-secondary bg-primary border" href="/search/{{ datos[1] }}">Regresar</a>
+            <br> <br>
             <div class="form-group form-row">
                 {{form.Id_pedido.label}}
                 <input type="text" name="Id_pedido" id="Id_pedido" class="form-control" value="{{ datos[0] }}" readonly>
