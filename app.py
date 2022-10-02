@@ -82,7 +82,9 @@ def search(documento=''):
             if documento != '':
                 Usuario = documento
                 datos = db.sql_select_usuario(Usuario)
-                form.Buscar.data = Usuario
+                datos = datos.copy()
+                datos.reverse()
+                #form.Buscar.data = Usuario
             else:
                 datos = [('Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null')]
             return render_template('search.html', form = form, DatosUsuario = datos, usuario_existe = False)
@@ -216,8 +218,8 @@ def delete(pedido):
         return redirect(url_for('search'))
 
 
-#if __name__=='__main__':
-#    app.run(debug=True)
+if __name__=='__main__':
+    app.run(debug=True)
     
 def api():
     pass
